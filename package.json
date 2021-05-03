@@ -1,0 +1,41 @@
+{
+  "name": "P6_Fisheye",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true
+    },
+    "extends": "eslint:recommended"
+  },
+  "eslintIgnore": [
+    "webpack.config.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChristopheRibault/ChristopheRibault_6_03052021.git"
+  },
+  "keywords": [],
+  "author": "Christophe Ribault",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChristopheRibault/ChristopheRibault_6_03052021/issues"
+  },
+  "homepage": "https://github.com/ChristopheRibault/ChristopheRibault_6_03052021/",
+  "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.0",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.4",
+    "eslint": "^7.25.0",
+    "sass": "^1.32.12",
+    "sass-loader": "^11.0.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0"
+  }
+}
