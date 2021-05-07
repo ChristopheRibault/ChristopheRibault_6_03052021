@@ -1,7 +1,8 @@
 const path = require('path');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
+  devtool: 'eval-cheap-module-source-map',
   watch: true,
   watchOptions: {
     ignored: /node_modules/,

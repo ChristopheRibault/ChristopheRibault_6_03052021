@@ -8,12 +8,27 @@
   },
   "eslintConfig": {
     "env": {
-      "browser": true
+      "browser": true,
+      "es6": true
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaVersion": 2017,
+      "sourceType": "module"
+    },
+    "rules": {
+      "quotes": ["error", "single"],
+      "semi": ["error", "always"],
+      "eqeqeq":["error", "always", {"null": "ignore"}],
+      "array-bracket-spacing": ["error", "always", {"singleValue": false, "objectsInArrays": false, "arraysInArrays": false}],
+      "object-curly-spacing": ["error", "always", {"arraysInObjects": true, "objectsInObjects": false}],
+      "max-len": ["error", {"code": 50, "ignoreStrings": true}]
     },
     "extends": "eslint:recommended"
   },
   "eslintIgnore": [
-    "webpack.config.js"
+    "webpack.config.js",
+    "dist/"
   ],
   "repository": {
     "type": "git",
@@ -29,6 +44,7 @@
   "devDependencies": {
     "@babel/core": "^7.14.0",
     "@babel/preset-env": "^7.14.0",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.4",
     "eslint": "^7.25.0",
