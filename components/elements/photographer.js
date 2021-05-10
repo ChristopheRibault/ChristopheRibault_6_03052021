@@ -1,6 +1,6 @@
 import Factory from '../factory';
 
-class Photographer extends HTMLElement{
+export default class Photographer extends HTMLElement{
 
   constructor(attributes) {
     super();
@@ -23,13 +23,9 @@ class Photographer extends HTMLElement{
       tagsContainer,
     );
 
-
   }
 
-}
+  static name = 'photographer-card';
+  static extends = 'article';
 
-export default {
-  name: 'photographer-card',
-  extend: 'article',
-  constructor: Photographer,
-};
+}

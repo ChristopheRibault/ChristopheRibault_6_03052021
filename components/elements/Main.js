@@ -1,7 +1,7 @@
 import Factory from '../factory';
 import { photographers } from '../../assets/data/data.json';
 
-class Main extends HTMLElement{
+export default class Main extends HTMLElement{
   
   constructor() {
     super();
@@ -13,14 +13,10 @@ class Main extends HTMLElement{
       'itemsContainer', 
       { type: 'photographer', data: photographers },
     );
-    console.log(container);
     this.appendChild(container);
   }
 
-}
+  static name = 'page-main';
+  static extends = 'main';
 
-export default {
-  name: 'page-main',
-  extend: 'main',
-  constructor: Main,
-};
+}

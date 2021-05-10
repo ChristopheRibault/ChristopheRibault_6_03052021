@@ -1,4 +1,4 @@
-class Avatar extends HTMLDivElement{
+export default class Avatar extends HTMLDivElement{
 
   constructor(attributes) {
     super();
@@ -18,10 +18,7 @@ class Avatar extends HTMLDivElement{
     );
   }
 
-}
+  static name = 'photographer-avatar';
+  static extends = 'div';
 
-export default {
-  name: 'photographer-avatar',
-  extend: 'div',
-  constructor: Avatar,
-};
+}

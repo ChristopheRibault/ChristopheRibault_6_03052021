@@ -1,4 +1,4 @@
-class PhotographerInfo extends HTMLDivElement{
+export default class PhotographerInfo extends HTMLDivElement{
 
   constructor(attributes) {
     super();
@@ -20,10 +20,7 @@ class PhotographerInfo extends HTMLDivElement{
     );
   }
 
-}
+  static name = 'photographer-info';
+  static extends = 'div';
 
-export default {
-  name: 'photographer-info',
-  extend: 'div',
-  constructor: PhotographerInfo,
-};
+}

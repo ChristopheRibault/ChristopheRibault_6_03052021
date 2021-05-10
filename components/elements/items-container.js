@@ -1,6 +1,6 @@
 import Factory from '../factory';
 
-class ItemsContainer extends HTMLDivElement{
+export default class ItemsContainer extends HTMLDivElement{
   
   /**
    * Create a container for any type of elements list
@@ -18,12 +18,10 @@ class ItemsContainer extends HTMLDivElement{
       );
       this.appendChild(itemElement);
     });
+    this.classList.add('container');
   }
 
-}
+  static name = 'items-container';
+  static extends = 'div';
 
-export default {
-  name: 'items-container',
-  extend: 'div',
-  constructor: ItemsContainer,
-};
+}
