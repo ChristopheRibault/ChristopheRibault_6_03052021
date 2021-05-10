@@ -2,7 +2,7 @@ import Factory from './components/factory';
 
 document
   .getElementById('app')
-  .appendChild(
+  .prepend(
     new Factory()
       .createElement('app')
   );

@@ -5,15 +5,19 @@ export default class Factory {
   constructor() {
     /**
      * create a DOM element
-     * @param {string} type 
+     * @param {string} type
+     * @param {object} attributes
      * @returns {InstanceType}
      */
-    this.createElement = function(type) {
+    this.createElement = function(type, attributes) {
       const component = components[type];
       if (component == null) return null;
+
+      if (customElements.get(component.name) === undefined) {
+        this.init(component);
+      }
       
-      this.init(component);
-      return new component.constructor();
+      return new component.constructor(attributes);
     };
     
     /**

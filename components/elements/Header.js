@@ -4,9 +4,9 @@ class Header extends HTMLElement{
   
   constructor() {
     super();
-    const factory = new Factory();
-    const [logo] = factory.createElements(['logo']);
-    this.appendChild(logo);
+    this.setAttribute('role', 'banner');
+    const [ logo, nav ] = new Factory().createElements([ 'logo', 'nav' ]);
+    this.append(logo, nav);
   }
 
 }

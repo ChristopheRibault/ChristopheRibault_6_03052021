@@ -5,8 +5,9 @@ class App extends HTMLDivElement{
   constructor() {
     super();
     const factory = new Factory();
-    const [header] = factory.createElements(['header']);
+    const [ header, main ] = factory.createElements([ 'header', 'main' ]);
     this.appendChild(header);
+    this.appendChild(main);
   }
 
 }

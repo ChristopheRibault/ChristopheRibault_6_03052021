@@ -22,7 +22,7 @@
       "eqeqeq":["error", "always", {"null": "ignore"}],
       "array-bracket-spacing": ["error", "always", {"singleValue": false, "objectsInArrays": false, "arraysInArrays": false}],
       "object-curly-spacing": ["error", "always", {"arraysInObjects": true, "objectsInObjects": false}],
-      "max-len": ["error", {"code": 50, "ignoreStrings": true}]
+      "max-len": ["error", {"code": 70, "ignoreStrings": true, "ignoreTemplateLiterals": true, "ignoreComments": true}]
     },
     "extends": "eslint:recommended"
   },
