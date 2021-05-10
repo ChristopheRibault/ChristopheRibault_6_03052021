@@ -17,12 +17,47 @@
       "sourceType": "module"
     },
     "rules": {
-      "quotes": ["error", "single"],
-      "semi": ["error", "always"],
-      "eqeqeq":["error", "always", {"null": "ignore"}],
-      "array-bracket-spacing": ["error", "always", {"singleValue": false, "objectsInArrays": false, "arraysInArrays": false}],
-      "object-curly-spacing": ["error", "always", {"arraysInObjects": true, "objectsInObjects": false}],
-      "max-len": ["error", {"code": 70, "ignoreStrings": true, "ignoreTemplateLiterals": true, "ignoreComments": true}]
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "semi": [
+        "error",
+        "always"
+      ],
+      "eqeqeq": [
+        "error",
+        "always",
+        {
+          "null": "ignore"
+        }
+      ],
+      "array-bracket-spacing": [
+        "error",
+        "always",
+        {
+          "singleValue": false,
+          "objectsInArrays": false,
+          "arraysInArrays": false
+        }
+      ],
+      "object-curly-spacing": [
+        "error",
+        "always",
+        {
+          "arraysInObjects": true,
+          "objectsInObjects": false
+        }
+      ],
+      "max-len": [
+        "error",
+        {
+          "code": 70,
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true,
+          "ignoreComments": true
+        }
+      ]
     },
     "extends": "eslint:recommended"
   },
@@ -53,5 +88,10 @@
     "style-loader": "^2.0.0",
     "webpack": "^5.36.2",
     "webpack-cli": "^4.6.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "babel-polyfill": "^6.26.0",
+    "redux": "^4.1.0"
   }
 }

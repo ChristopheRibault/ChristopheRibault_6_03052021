@@ -8,8 +8,9 @@ module.exports = {
     ignored: /node_modules/,
   },
   entry: {
+    polyfill: 'babel-polyfill',
     app: './index.js',
-    style: './style/index.sass'
+    style: './style/index.sass',
   },
   output: {
     path:path.resolve(__dirname, "dist"),

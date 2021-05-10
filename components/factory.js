@@ -99,21 +99,10 @@ export default class Factory {
 
       return element;
     };
-    
-    /**
-     * create many DOM elements
-     * @param {string[]} types 
-     * @returns {InstanceType[]}
-     */
-    this.createElements = function(types = []) {
-      return types.map(
-        type => this.createElement(type)
-      );
-    };
 
     /**
      * define a custom element
-     * @param {class} Component 
+     * @param {HTMLElement} Component 
      */
     this.init = function(Component) {
       customElements.define(
