@@ -7,22 +7,58 @@ export default class Factory {
     /**
      * create a DOM element
      * @param {string} type
-     * @param {object} options
+     * @param {object} options 
      * @param {string} options.id id de l'élement
+     * @param {string} options.textContent contenu textuel de l'élement
+     * @param {string} options.innerHTML contenu HTML de l'élement
      * @param {string|string[]} options.classes classes de l'élement
      * @param {object} options.attributes attributs de l'élement
+     * @param {object} data data to pass to element
      * @returns {HTMLElement}
      */
-    this.createElement = function(type, options = {}) {
+    this.createElement = function(type, options = {}, data) {
       const Component = components[type];
+      let element;
 
-      if (customElements.get(Component.name) === undefined) {
-        this.init(Component);
+      // Generic Element
+      if (!Component) {
+        element = document.createElement(type);
+      // Custom element
+      } else {
+        if (customElements.get(Component.name) === undefined) {
+          this.init(Component);
+        }
+        element = new Component(data);
       }
-
-      const element = new Component(options);
       
       return this.populateElement(element, options);
+    };
+
+    /**
+     * Create a container element with a list of children elements
+     * @param {string} childrenType type of child elements to contain
+     * @param {object[]} data array of container items data
+     * @param {object} options options for container element
+     * @param {object} childrenOptions options for children elements
+     * @returns {HTMLDivElement}
+     */
+    this.createContainer = function(
+      childrenType,
+      data,
+      options,
+      childrenOptions,
+    ) {
+      const container = this.createElement('div', options);
+      data.forEach(item => {
+        container.appendChild(this.createElement(
+          childrenType,
+          childrenOptions,
+          item,
+        ));
+      });
+
+      return container;
+
     };
 
     /**
@@ -30,6 +66,8 @@ export default class Factory {
      * @param {HTMLElement} element 
      * @param {object} options 
      * @param {string} options.id id de l'élement
+     * @param {string} options.textContent contenu textuel de l'élement
+     * @param {string} options.innerHTML contenu HTML de l'élement
      * @param {string|string[]} options.classes classes de l'élement
      * @param {object} options.attributes attributs de l'élement
      * @returns {HTMLElement}
@@ -39,6 +77,14 @@ export default class Factory {
 
       if (options.id) {
         element.id = options.id;
+      }
+
+      if (options.textContent) {
+        element.textContent = options.textContent;
+      }
+
+      if (options.innerHTML) {
+        element.innerHTML = options.innerHTML;
       }
 
       if (options.classes) {
@@ -53,14 +99,6 @@ export default class Factory {
 
       return element;
     };
-
-    // this.createContainer = function(
-    //   childrenType,
-    //   attributes,
-    //   childrenAttributes,
-    // ) {
-    //   const container = document.createElement('div');
-    // };
     
     /**
      * create many DOM elements

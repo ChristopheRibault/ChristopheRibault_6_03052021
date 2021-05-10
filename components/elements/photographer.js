@@ -2,19 +2,23 @@ import Factory from '../factory';
 
 export default class Photographer extends HTMLElement{
 
-  constructor(attributes) {
+  constructor(data) {
     super();
     const factory = new Factory();
 
-    this.classList.add('photographer-card');
-    const avatar = factory.createElement('avatar', attributes);
-    const info = factory.createElement('photographerInfo', attributes);
-    const tagsContainer = factory.createElement(
-      'itemsContainer',
-      {
-        type: 'tag',
-        data: attributes.tags,
-      }
+    const avatar = factory.createElement(
+      'avatar',
+      { classes: ['photographer-card__avatar'] },
+      data,
+    );
+    const info = factory.createElement(
+      'photographerInfo',
+      { classes: ['photographer-card__info'] },
+      data,
+    );
+    const tagsContainer = factory.createContainer(
+      'tag',
+      data.tags,
     );
     
     this.append(

@@ -5,13 +5,16 @@ export default class Main extends HTMLElement{
   
   constructor() {
     super();
-    const h1 = document.createElement('h1');
+    const factory = new Factory();
+    const h1 = factory.createElement('h1');
     h1.textContent = 'Nos photographes';
     this.appendChild(h1);
 
-    const container = new Factory().createElement(
-      'itemsContainer', 
-      { type: 'photographer', data: photographers },
+    const container = factory.createContainer(
+      'photographer',
+      photographers,
+      { classes: ['photographer-container'] },
+      { classes: ['photographer-card'] }
     );
     this.appendChild(container);
   }

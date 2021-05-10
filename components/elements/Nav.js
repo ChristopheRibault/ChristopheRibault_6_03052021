@@ -6,10 +6,11 @@ export default class Nav extends HTMLElement{
   constructor() {
     super();
     const factory = new Factory();
-    const tagContainer = factory.createElement(
-      'itemsContainer',
-      { type: 'tag', data: tags }
+    const tagContainer = factory.createContainer(
+      'tag',
+      tags,
     );
+    
     this.appendChild(tagContainer);
   }
 

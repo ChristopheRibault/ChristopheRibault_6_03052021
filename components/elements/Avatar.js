@@ -1,16 +1,28 @@
+import Factory from '../factory';
+
 export default class Avatar extends HTMLDivElement{
 
-  constructor(attributes) {
+  constructor(data) {
     super();
-    this.classList.add('photographer-card__avatar');
+    const factory = new Factory();
 
-    const image = document.createElement('img');
-    image.classList.add('avatar-picture', 'photographer-card__img');
-    image.src = `assets/pictures/avatars/${attributes.portrait}`;
+    const image = factory.createElement(
+      'img',
+      { 
+        classes: [ 'photographer-card__img', 'avatar-picture' ],
+        attributes: {
+          src: `assets/pictures/avatars/${data.portrait}`,
+        }
+      },
+    );
 
-    const name = document.createElement('h2');
-    name.classList.add('photographer-card__name');
-    name.textContent = attributes.name;
+    const name = factory.createElement(
+      'h2',
+      { 
+        classes: ['photographer-card__name'],
+        textContent: data.name,
+      },
+    );
 
     this.append(
       image,

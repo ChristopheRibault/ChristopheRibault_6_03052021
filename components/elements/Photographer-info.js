@@ -1,17 +1,26 @@
+import { StringHelper } from '../../utils';
+import Factory from '../factory';
+
 export default class PhotographerInfo extends HTMLDivElement{
 
-  constructor(attributes) {
+  constructor(data) {
     super();
-    this.classList.add('photographer-card__info');
+    const factory = new Factory;
 
-    const place = document.createElement('p');
-    place.textContent = `${attributes.city}, ${attributes.country}`;
+    const place = factory.createElement(
+      'p',
+      { textContent: `${data.city}, ${data.country}` },
+    );
 
-    const tagline = document.createElement('p');
-    tagline.textContent = attributes.tagline;
+    const tagline = factory.createElement(
+      'p',
+      { textContent: data.tagline },
+    );
 
-    const price = document.createElement('p');
-    price.textContent = `${attributes.price}€/jour`;
+    const price = factory.createElement(
+      'p',
+      { textContent: StringHelper.formatPrice(data.price) },
+    );
 
     this.append(
       place,
