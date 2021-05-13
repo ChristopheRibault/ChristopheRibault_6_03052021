@@ -1,4 +1,4 @@
-import Factory from '../elements/factory';
+import Factory from '../components/factory';
 
 export default class Router {
 
@@ -19,7 +19,6 @@ export default class Router {
       `${pageType}-${id}`,
       url,
     );
-    console.log(window.history);
   }
 
   /**
@@ -71,7 +70,7 @@ export default class Router {
         return factory.createElement(
           'photographerPage',
           { classe: ['photographer-page'] },
-          { id },
+          id,
         );
     
       default:

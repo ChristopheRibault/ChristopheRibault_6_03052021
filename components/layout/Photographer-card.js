@@ -8,9 +8,9 @@ export default class Photographer extends HTMLElement{
 
     this.id = `photographer-${data.id}`;
 
-    const avatar = factory.createElement(
-      'avatar',
-      { classes: ['photographer-card__avatar'] },
+    const identity = factory.createElement(
+      'identity',
+      { classes: ['photographer-card__identity'] },
       data,
     );
     const info = factory.createElement(
@@ -25,7 +25,7 @@ export default class Photographer extends HTMLElement{
     );
     
     this.append(
-      avatar,
+      identity,
       info,
       tagsContainer,
     );

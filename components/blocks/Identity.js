@@ -1,7 +1,7 @@
 import Router from '../../router';
 import Factory from '../factory';
 
-export default class Avatar extends HTMLDivElement{
+export default class Identity extends HTMLDivElement{
 
   constructor(data) {
     super();
@@ -10,13 +10,11 @@ export default class Avatar extends HTMLDivElement{
     this.setAttribute('tabIndex', '0');
 
     const image = factory.createElement(
-      'img',
+      'avatar',
       { 
-        classes: [ 'photographer-card__img', 'avatar-picture' ],
-        attributes: {
-          src: `assets/pictures/avatars/${data.portrait}`,
-        }
+        classes: ['photographer-card__img'],
       },
+      data.portrait,
     );
 
     const name = factory.createElement(

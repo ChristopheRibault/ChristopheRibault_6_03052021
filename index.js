@@ -1,4 +1,4 @@
-import Factory from './elements/factory';
+import Factory from './components/factory';
 import Router from './router';
 
 document

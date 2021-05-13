@@ -1,11 +1,13 @@
 import app from './App';
-import * as components from './components';
+import * as simples from './simples';
+import * as blocks from './blocks';
 import * as layout from './layout';
 import * as pages from './pages';
 
 export default {
   app,
-  ...components,
+  ...simples,
+  ...blocks,
   ...layout,
   ...pages,
 };
