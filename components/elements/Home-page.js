@@ -2,26 +2,27 @@ import Factory from '../factory';
 import store from '../../store';
 
 
-export default class Main extends HTMLElement{
+export default class Home extends HTMLElement{
   
   constructor() {
     super();
+    this.pageType = 'home';
+    this.title = 'Home - FishEye';
+    this.url = '/';
     const factory = new Factory();
 
+    store.subscribe(() => {
+      this.setAttribute('update', true);
+    });
     
     const h1 = factory.createElement(
       'h1',
       { textContent: 'Nos photographes' }
     );
       
-    store.subscribe(() => {
-      this.setAttribute('update', true);
-    });
-
-    
     this.createPhotographerContainer = function() {
       return factory.createContainer(
-        'photographer',
+        'photographerCard',
         store.getState().photographers,
         { classes: ['photographer-container'] },
         { classes: ['photographer-card'] }
@@ -48,7 +49,7 @@ export default class Main extends HTMLElement{
   }
 
   static get observedAttributes() {return ['update'];}
-  static name = 'page-main';
-  static extends = 'main';
+  static name = 'home-main';
+  static extends = 'section';
 
 }

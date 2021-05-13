@@ -48,9 +48,10 @@ export default class Factory {
       options,
       childrenOptions,
     ) {
-      const container = this.createElement('div', options);
+      const container = this.createElement('ul', options);
       data.forEach(item => {
-        container.appendChild(this.createElement(
+        container.appendChild(this.createElement('li'))
+          .appendChild(this.createElement(
           childrenType,
           childrenOptions,
           item,
@@ -74,6 +75,7 @@ export default class Factory {
      */
     this.populateElement = function(element, options = {}) {
       if (!element) return null;
+      if (!options) return element;
 
       if (options.id) {
         element.id = options.id;

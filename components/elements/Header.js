@@ -11,7 +11,11 @@ export default class Header extends HTMLElement{
     );
     const nav = factory.createElement(
       'nav',
-      { id: 'main-nav', classes: ['main-nav'] },
+      { 
+        id: 'main-nav',
+        classes: ['main-nav'],
+        attributes: { 'aria-label': 'photographer categories' }
+      },
     );
     this.append(logo, nav);
   }

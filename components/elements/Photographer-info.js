@@ -9,17 +9,26 @@ export default class PhotographerInfo extends HTMLDivElement{
 
     const place = factory.createElement(
       'p',
-      { textContent: `${data.city}, ${data.country}` },
+      { 
+        textContent: `${data.city}, ${data.country}`,
+        classes: ['photographer-card__place'],
+      },
     );
 
     const tagline = factory.createElement(
       'p',
-      { textContent: data.tagline },
+      { 
+        textContent: data.tagline,
+        classes: ['photographer-card__tagline'],
+      },
     );
 
     const price = factory.createElement(
       'p',
-      { textContent: StringHelper.formatPrice(data.price) },
+      { 
+        textContent: StringHelper.formatPrice(data.price),
+        classes: ['photographer-card__price'],
+      },
     );
 
     this.append(

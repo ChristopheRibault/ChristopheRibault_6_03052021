@@ -6,6 +6,8 @@ export default class Photographer extends HTMLElement{
     super();
     const factory = new Factory();
 
+    this.id = `photographer-${data.id}`;
+
     const avatar = factory.createElement(
       'avatar',
       { classes: ['photographer-card__avatar'] },
@@ -19,6 +21,7 @@ export default class Photographer extends HTMLElement{
     const tagsContainer = factory.createContainer(
       'tag',
       data.tags,
+      { classes: ['photographer-card__tags'] }
     );
     
     this.append(

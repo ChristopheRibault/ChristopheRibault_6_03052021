@@ -1,10 +1,13 @@
+import Router from '../../router';
 import Factory from '../factory';
 
 export default class Avatar extends HTMLDivElement{
 
   constructor(data) {
     super();
+    this.data = data;
     const factory = new Factory();
+    this.setAttribute('tabIndex', '0');
 
     const image = factory.createElement(
       'img',
@@ -24,10 +27,27 @@ export default class Avatar extends HTMLDivElement{
       },
     );
 
+    this.redirect = function() {
+      const router = new Router();
+      router.switchPage(
+        router.createPage(
+          'photographer',
+          data.id,
+        )
+      );
+    };
+
+    this.addEventListener('click', () => this.redirect());
+    this.addEventListener('keydown', (event) => {
+      if(event.code === 'Enter') this.redirect();
+    });
+
+
     this.append(
       image,
       name,
     );
+
   }
 
   static name = 'photographer-avatar';

@@ -5,13 +5,23 @@ export default class App extends HTMLDivElement{
   constructor() {
     super();
     const factory = new Factory();
+
+    const content = factory.createElement(
+      'main',
+      { id: 'page-content' },
+    );
+
+    const home = factory.createElement('homePage');
+    content.append(home);
+
     const header = factory.createElement(
       'header', 
       { id: 'main-header', attributes: { role: 'banner' }},
+      // { showNav: page === home },
     );
-    const main = factory.createElement('main');
-    this.appendChild(header);
-    this.appendChild(main);
+
+    this.append(header, content);
+
   }
 
   static name = 'main-app';
