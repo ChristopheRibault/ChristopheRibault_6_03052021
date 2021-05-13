@@ -1,4 +1,4 @@
-import { photographers } from '../assets/data/data.json';
+import { photographers } from '../../assets/data/data.json';
 
 export default function photographerReducer(
   state = { photographers },

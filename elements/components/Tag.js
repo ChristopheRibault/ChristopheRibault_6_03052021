@@ -1,4 +1,4 @@
-import { filterPhotographers } from '../../actions';
+import { filterPhotographers } from '../../store/actions';
 import { StringHelper } from '../../utils';
 
 export default class Tag extends HTMLButtonElement{
