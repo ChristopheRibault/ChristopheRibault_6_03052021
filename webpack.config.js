@@ -10,6 +10,7 @@ module.exports = {
   entry: {
     polyfill: 'babel-polyfill',
     app: './index.js',
+    photographer: './photographer.js',
     style: './style/index.sass',
   },
   output: {

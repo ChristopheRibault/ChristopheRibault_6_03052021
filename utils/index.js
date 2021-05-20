@@ -1,9 +1,5 @@
-import StringHelper from './string';
-import ArrayHelper from './array';
-import URLHelper from './url';
+import StringHelper from './stringHelper';
 
 export {
   StringHelper,
-  ArrayHelper,
-  URLHelper,
 };

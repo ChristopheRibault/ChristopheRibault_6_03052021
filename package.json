@@ -53,6 +53,16 @@
           "objectsInObjects": false
         }
       ],
+      "comma-dangle": [
+        "error",
+        "always-multiline"
+      ],
+      "eol-last": [
+        "error",
+        "always"
+      ],
+      "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
+      
       "max-len": [
         "error",
         {

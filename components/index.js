@@ -1,13 +1,7 @@
-import app from './App';
-import * as simples from './simples';
-import * as blocks from './blocks';
-import * as layout from './layout';
-import * as pages from './pages';
+import Tag from './Tag';
+import PhotographerCard from './PhotographerCard';
 
-export default {
-  app,
-  ...simples,
-  ...blocks,
-  ...layout,
-  ...pages,
+export {
+  Tag,
+  PhotographerCard,
 };
