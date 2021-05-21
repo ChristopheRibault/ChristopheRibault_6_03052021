@@ -1,0 +1,39 @@
+.photographer
+  width: 100%
+  display: flex
+  flex-flow: row nowrap
+  justify-content: space-between
+  background-color: #fafafa
+  padding: 50px
+  @include tablet
+    padding: 2px
+
+.photographer-info
+  display: flex
+  flex-direction: column
+  p
+    margin: 5px 0
+  &__name
+    margin: 0
+  &__tags > ul
+    display: flex
+    flex-flow: row wrap
+
+.photographer-avatar
+  @include mobile
+    width: 80px
+    height: 80px
+
+.contact-btn
+  @include tablet
+    position: fixed
+    bottom: 30px
+    left: 50%
+    transform: translateX(-50%)
+    > .btn
+      padding: 10px
+
+.photo-container > ul
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-evenly

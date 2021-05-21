@@ -4,10 +4,53 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM Sans">
+  <script src="https://kit.fontawesome.com/a9f5c40bda.js" crossorigin="anonymous" defer></script>
   <script src="/dist/photographer.bundle.js" defer></script>
+  <script src="/dist/style.bundle.js"></script>
   <title>FishEye</title>
 </head>
 <body>
-  
+  <header class="main-header" role="banner">
+    <a href="" id="page-logo" class="page-logo">
+      Fish<i class="fas fa-camera"></i>ye
+    </a>
+  </header>
+  <main>
+    <header class="photographer">
+      <div class="photographer-info">
+        <h1 class="photographer-info__name photographer-name"></h1>
+        <p class="photographer-info__place photographer-place"></p>
+        <p class="photographer-info__tagline photographer-tagline"></p>
+        <div class="photographer-info__tags"></div>
+      </div>
+      <div class="contact-btn">
+        <button class="btn">Contactez-moi</button>
+      </div>
+      <div>
+        <img class="photographer-avatar avatar-img">
+      </div>
+    </header>
+    <section class="photos">
+      <h2 class="sr-only">photos</h2>
+      <label for="select">Trier par</label>
+      <select class="order-select" name="select" id="select">
+        <option value="popularity">Popularité</option>
+        <option value="date">Date</option>
+        <option value="title">Titre</option>
+      </select>
+      <div class="photo-container">
+
+      </div>
+    </section>
+    <div class="modal-bg">
+      <div class="photo-modal">
+        <div class="photo-modal__close"></div>
+        <div class="photo-modal__previous"></div>
+        <div class="photo-modal__photo-container"></div>
+        <div class="photo-modal__next"></div>
+      </div>
+    </div>
+  </main>
 </body>
 </html>
