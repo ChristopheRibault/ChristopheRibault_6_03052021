@@ -1,4 +1,4 @@
-import Factory from '../factory';
+import Factory from '../script/factory';
 
 export default class PhotoModal extends HTMLDivElement {
 
@@ -13,7 +13,15 @@ export default class PhotoModal extends HTMLDivElement {
     container.classList.add('photo-modal__container');
 
     const view = factory.createElement(this.type);
-    view.src = `/assets/pictures/${data.photographerId}/${data.image || data.video}`;
+    if (this.type === 'img') {
+      view.src = `/assets/pictures/${data.photographerId}/${data.image}`;
+    } else {
+      const source = factory.createElement('source');
+      source.src = `/assets/pictures/${data.photographerId}/${data.video}`;
+      source.type = 'video/mp4';
+      view.setAttribute('controls', true);
+      view.append(source);
+    }
     view.classList.add('photo-modal__img');
 
     const title = factory.createElement('h2');

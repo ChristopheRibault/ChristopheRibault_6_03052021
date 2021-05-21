@@ -1,5 +1,4 @@
-import Factory from '../factory';
-
+import Factory from '../script/factory';
 
 export default class PhotoCard extends HTMLElement {
 
@@ -8,8 +7,9 @@ export default class PhotoCard extends HTMLElement {
     const factory = new Factory();
     this.id = `card-${data.id}`;
     this.classList.add('photo-card');
+    this.setAttribute('tabIndex', 0);
 
-    const thumb = factory.createElement('img');
+    const thumb = factory.createElement(data.image ? 'img' : 'video');
     thumb.src = `/assets/pictures/${data.photographerId}/${data.image || data.video}`;
     thumb.alt = data.title;
     thumb.classList.add('photo-card__img');

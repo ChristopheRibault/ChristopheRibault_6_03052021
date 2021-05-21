@@ -1,4 +1,4 @@
-import Factory from '../factory';
+import Factory from '../script/factory';
 
 export default class PhotographerCard extends HTMLElement {
 

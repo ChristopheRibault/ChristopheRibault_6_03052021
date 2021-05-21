@@ -9,8 +9,8 @@ module.exports = {
   },
   entry: {
     polyfill: 'babel-polyfill',
-    app: './index.js',
-    photographer: './photographer.js',
+    home: './script/home/index.js',
+    photographer: './script/photographer/index.js',
     style: './style/index.sass',
   },
   output: {
