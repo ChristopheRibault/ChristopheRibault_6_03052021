@@ -18,9 +18,10 @@ export default class PhotographerPage {
   constructor(data) {
     this.photographer = data.photographer;
     this.media = data.media;
+    this.init();
   }
 
-  fillContent() {
+  init() {
     name.textContent = this.photographer.name;
     place.textContent = `${this.photographer.city}, ${this.photographer.country}`;
     tagline.textContent = this.photographer.tagline;
