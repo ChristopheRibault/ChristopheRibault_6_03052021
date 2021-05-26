@@ -17,6 +17,7 @@ export default class Carousel {
 
     this.init();
     this.photos = document.querySelectorAll('.photo-modal__photo');
+    this.removePhotosFocus();
   }
 
   set current(index) {
@@ -42,6 +43,10 @@ export default class Carousel {
       this.photos[this.prev]
         .classList.add('photo-modal__photo--previous');
     }
+
+    this.photos[this.current]
+      .querySelector('img, video')
+      .setAttribute('tabindex', 0);
   }
 
   get media() {
@@ -75,6 +80,7 @@ export default class Carousel {
   showModal(i) {
     this.bg.style.display = 'flex';
     this.current = i;
+    this.closeBtn.focus();
   }
   
   closeModal() {
@@ -87,9 +93,15 @@ export default class Carousel {
       );
     });
   }
+
+  removePhotosFocus() {
+    this.photos.forEach(photo => {
+      photo.querySelector('img, video').setAttribute('tabindex', -1);
+    });
+  }
   
   /**
-   * Change current current
+   * Change current photo
    *  add variation to increase or decrease index
    *  add size of carusel too loop back to last when index > 0
    *  %size to loop back to first when index > last
@@ -97,6 +109,7 @@ export default class Carousel {
    */
   changePhoto(next) {
     const oldPhoto = this.photos[this.current];
+    oldPhoto.querySelector('img, video').setAttribute('tabindex', -1);
     const newPhoto = this.photos[next ? this.next : this.prev];
 
     oldPhoto.classList.replace(
@@ -117,19 +130,66 @@ export default class Carousel {
     }
   }
 
+  navigate(e) {
+    switch (e.code) {
+      case 'Escape':
+        this.closeModal();
+        break;
+      case 'ArrowLeft':
+        this.current = 'prev';
+        break;
+      case 'ArrowRight':
+        this.current = 'next';
+        break;
+      default:
+        break;
+    }
+  }
+
   init() {
     this.caruselPhotoContainer.append(
       factory.createList('ul', 'PhotoModal', this.media),
     );
     this.closeBtn
       .addEventListener('click', () => this.closeModal());
+    this.closeBtn
+      .addEventListener(
+        'keydown',
+        (e) => {
+          if (e.code === 'Enter') {
+            this.closeModal();
+          }
+        },
+      );
     this.nextBtn
       .addEventListener('click', () => this.current = 'next');
+    this.nextBtn
+      .addEventListener(
+        'keydown',
+        (e) => {
+          if (e.code === 'Enter') {
+            this.current = 'next';
+          }
+        },
+      );
     this.prevBtn
       .addEventListener('click', () => this.current = 'prev');
+    this.prevBtn
+      .addEventListener(
+        'keydown',
+        (e) => {
+          if (e.code === 'Enter') {
+            this.current = 'prev';
+          }
+        },
+      );
     this.cardImages.forEach((card, i) => {
       card.addEventListener('click', () => this.showModal(i));
     });
+    this.bg.addEventListener(
+      'keydown',
+      (e) => this.navigate(e),
+    );
   }
 
   unmount() {

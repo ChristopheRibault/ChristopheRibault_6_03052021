@@ -8,6 +8,7 @@ export default class PhotoModal extends HTMLLIElement {
     this.id = `modal-${data.id}`;
     this.type = data.image ? 'img' : 'video';
     this.classList.add('photo-modal__photo');
+    this.setAttribute('tabindex', -1);
     const factory = new Factory();
     const container = factory.createElement('div');
     container.classList.add('photo-modal__container');
