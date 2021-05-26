@@ -6,6 +6,10 @@ export default class PhotographerPage {
   constructor(data) {
     this.photographer = data.photographer;
     this.media = data.media;
+    this.likesCount = this.media.reduce(
+      (acc, curr) => acc + Number(curr.likes),
+      0,
+    );
     this.elements = {
       name: document.querySelector('.photographer-info__name'),
       place : document.querySelector('.photographer-info__place'),
@@ -22,7 +26,6 @@ export default class PhotographerPage {
 
   render(data) {
     this.elements.photoContainer.innerHTML = '';
-    this.elements.modalPhotoContainer.innerHTML = '';
     this.elements.photoContainer.append(
       factory.createList('ul', 'PhotoCard', data),
     );
@@ -40,12 +43,16 @@ export default class PhotographerPage {
       factory.createList('ul', 'PhotoCard', this.media),
     );
 
-    this.elements.likesTabQty.textContent = this.media.reduce(
-      (acc, curr) => acc + Number(curr.likes),
-      0,
-    );
+    this.elements.likesTabQty.textContent = this.likesCount;
     this.elements.likesTabPrice.textContent = `${this.photographer.price}€/jour`;
-    
+
+    document.addEventListener(
+      'newLike',
+      () => {
+        this.likesCount += 1;
+        this.elements.likesTabQty.textContent = this.likesCount;
+      },
+    );
   }
   
 }
