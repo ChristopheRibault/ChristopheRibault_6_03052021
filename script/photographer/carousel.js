@@ -79,6 +79,13 @@ export default class Carousel {
   
   closeModal() {
     this.bg.style.display = 'none';
+    this.photos.forEach(photo => {
+      photo.classList.remove(
+        'photo-modal__photo--active',
+        'photo-modal__photo--next',
+        'photo-modal__photo--previous',
+      );
+    });
   }
   
   /**
