@@ -2,6 +2,7 @@ import PhotographerPage from './pageContent';
 import Carousel from './carousel';
 import ContactForm from './contactForm';
 import data from '../../assets/data/data.json';
+import Dropdown from './dropdown';
 
 const id = Number(new URLSearchParams(document.location.search).get('id'));
 
@@ -10,6 +11,21 @@ const photographerData = {
   media: data.media.filter(m => m.photographerId === id),
 };
 
-new PhotographerPage(photographerData);
-new Carousel(photographerData.media.length);
+const page = new PhotographerPage(photographerData);
+new Dropdown();
+let carousel = new Carousel(photographerData.media);
 new ContactForm(photographerData.photographer.name);
+
+document.addEventListener('orderList', (e) => {
+  photographerData.media.sort((a, b) => {
+    if (a[e.detail] <= b[e.detail]) return -1;
+    return 1;
+  });
+
+  // For popularity, show more likes first
+  if (e.detail === 'likes') photographerData.media.reverse();
+  page.render(photographerData.media);
+  
+  carousel.unmount();
+  carousel = new Carousel(photographerData.media);
+});

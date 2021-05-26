@@ -5,15 +5,18 @@ export default class ContactForm {
   constructor(name) {
     this.photographerName = name;
     this.bg = document.querySelector('.form-modal-bg');
+    this.main = document.querySelector('main');
     this.init();
   }
 
   openModal() {
     this.bg.style.display = 'flex';
+    this.main.setAttribute('aria-hidden', true);
   }
 
   closeModal() {
     this.bg.style.display = 'none';
+    this.main.removeAttribute('aria-hidden');
   }
 
   checkFormValidity(data) {
@@ -99,6 +102,14 @@ export default class ContactForm {
       'click',
       () => this.openModal(),
     );
+
+    document
+      .addEventListener(
+        'keydown',
+        (e) => {
+          if (e.code === 'Escape') this.closeModal();
+        },
+      );
 
     document
       .getElementById('close-form')

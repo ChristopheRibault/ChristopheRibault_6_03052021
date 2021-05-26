@@ -33,12 +33,24 @@
     </header>
     <section class="photos">
       <h2 class="sr-only">photos</h2>
-      <label for="select">Trier par</label>
-      <select class="order-select" name="select" id="select">
-        <option value="popularity">Popularité</option>
-        <option value="date">Date</option>
-        <option value="title">Titre</option>
-      </select>
+      <div class="listbox-area">
+        <span id="exp_elem">Trier par</span>
+        <div class="exp_wrapper">
+          <button
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            aria-labelledby="exp_elem exp_button"
+            id="exp_button"
+          >Popularité</button>
+          <ul id="exp_elem_list" tabindex="-1" aria-labelledby="exp_elem" class="hidden">
+            <li id="exp_elem_popularity" tabindex="-1" role="option" value="likes">Popularité</li>
+            <div class="separation-line"></div>
+            <li id="exp_elem_date" tabindex="-1" role="option" value="date">Date</li>
+            <div class="separation-line"></div>
+            <li id="exp_elem_title" tabindex="-1" role="option" value="title">Titre</li>
+          </ul>
+        </div>
+      </div>
       <div class="photo-container">
 
       </div>
@@ -48,95 +60,96 @@
       <i class="fas fa-heart likes-tab__icon"></i>
       <span class="likes-tab__price"></span>
     </div>
-    <div class="modal-bg">
-      <div class="photo-modal" role="dialog">
-        <div class="photo-modal__close" tabindex="0"></div>
-        <div class="photo-modal__previous" tabindex="0"></div>
-        <div class="photo-modal__photo-container"></div>
-        <div class="photo-modal__next" tabindex="0"></div>
-      </div>
-    </div>
-    <div class="form-modal-bg">
-      <form class="form-modal" id="contact-form" role="dialog" aria-labelledby="contact-me-title">
-        <div class="form-modal__close" id="close-form" tabindex="0"></div>
-        <h1 class="form-modal__title" id="contact-me-title"></h1>
-
-        <label 
-          class="form-modal__label"
-          for="firstname"
-          id="firstname-label"
-        >Prénom</label>
-        <input
-          class="form-modal__input"
-          type="text"
-          name="firstname"
-          id="firstname"
-          aria-labelledby="firstname-label"
-        />
-        <div 
-          class="error-message"
-          id="firstname-error-message"
-        ></div>
-
-        <label
-          class="form-modal__label"
-          for="lastname"
-          id="lastname-label"
-        >Nom</label>
-        <input
-          class="form-modal__input"
-          type="text"
-          name="lastname"
-          id="lastname"
-          aria-labelledby="lastname-label"
-        />
-        <div
-          class="error-message"
-          id="lastname-error-message"
-        ></div>
-
-        <label
-          class="form-modal__label"
-          for="email"
-          id="email-label"
-        >Email</label>
-        <input
-          class="form-modal__input"
-          type="email"
-          name="email"
-          id="email"
-          aria-labelledby="email-label"
-        />
-        <div
-          class="error-message"
-          id="email-error-message"
-        ></div>
-
-        <label
-          class="form-modal__label"
-          for="message"
-          id="message-label"
-        >Votre message</label>
-        <textarea
-          class="form-modal__message"
-          name="message"
-          id="message"
-          aria-labelledby="message-label"
-        ></textarea>
-        <div
-          class="error-message"
-          id="message-error-message"
-        ></div>
-
-        <input
-          class="form-modal__input form-modal__btn"
-          type="submit"
-          value="Envoyer"
-          formnovalidate="formnovalidate"
-        />
-        <div class="message-sent">Merci! Votre message a bien été envoyé.</div>
-      </form>
-    </div>
   </main>
+  
+  <div class="modal-bg">
+    <div class="photo-modal" role="dialog" aria-modal="true">
+      <div class="photo-modal__close" tabindex="0"></div>
+      <div class="photo-modal__previous" tabindex="0"></div>
+      <div class="photo-modal__photo-container"></div>
+      <div class="photo-modal__next" tabindex="0"></div>
+    </div>
+  </div>
+  <div class="form-modal-bg">
+    <form class="form-modal" id="contact-form" role="dialog" aria-modal="true" aria-labelledby="contact-me-title">
+      <div class="form-modal__close" id="close-form" tabindex="0"></div>
+      <h1 class="form-modal__title" id="contact-me-title"></h1>
+
+      <label 
+        class="form-modal__label"
+        for="firstname"
+        id="firstname-label"
+      >Prénom</label>
+      <input
+        class="form-modal__input"
+        type="text"
+        name="firstname"
+        id="firstname"
+        aria-labelledby="firstname-label"
+      />
+      <div 
+        class="error-message"
+        id="firstname-error-message"
+      ></div>
+
+      <label
+        class="form-modal__label"
+        for="lastname"
+        id="lastname-label"
+      >Nom</label>
+      <input
+        class="form-modal__input"
+        type="text"
+        name="lastname"
+        id="lastname"
+        aria-labelledby="lastname-label"
+      />
+      <div
+        class="error-message"
+        id="lastname-error-message"
+      ></div>
+
+      <label
+        class="form-modal__label"
+        for="email"
+        id="email-label"
+      >Email</label>
+      <input
+        class="form-modal__input"
+        type="email"
+        name="email"
+        id="email"
+        aria-labelledby="email-label"
+      />
+      <div
+        class="error-message"
+        id="email-error-message"
+      ></div>
+
+      <label
+        class="form-modal__label"
+        for="message"
+        id="message-label"
+      >Votre message</label>
+      <textarea
+        class="form-modal__message"
+        name="message"
+        id="message"
+        aria-labelledby="message-label"
+      ></textarea>
+      <div
+        class="error-message"
+        id="message-error-message"
+      ></div>
+
+      <input
+        class="form-modal__input form-modal__btn"
+        type="submit"
+        value="Envoyer"
+        formnovalidate="formnovalidate"
+      />
+      <div class="message-sent">Merci! Votre message a bien été envoyé.</div>
+    </form>
+  </div>
 </body>
 </html>

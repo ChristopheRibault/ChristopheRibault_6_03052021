@@ -1,0 +1,51 @@
+.listbox-area
+  display: flex
+  flex-flow: row nowrap
+  align-items: baseline
+
+#exp_elem
+  font-weight: 900
+  margin-right: 1em
+
+.exp_wrapper
+  position: relative
+  min-width: 120px
+  & > *
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+
+#exp_button
+  text-align: left
+  font-size: .8em
+  background-color: $primary-color
+  color: #fff
+  font-weight: 900
+  border: none
+  border-radius: 5px
+  padding: 1em
+  cursor: pointer
+  font-family: 'DM Sans'
+  @include dropdown-arrow(down)
+
+#exp_elem_list
+  background-color: $primary-color
+  color: #fff
+  border-radius: 5px
+  z-index: 1
+  & li
+    font-weight: 900
+    font-size: .8em
+    padding: 1em
+    cursor: pointer
+  & > .separation-line
+    z-index: 1
+    margin: 0 .5em
+    border-bottom: 1px solid #fff
+
+#exp_elem_popularity
+  @include dropdown-arrow(up)
+
+.hidden
+  display: none

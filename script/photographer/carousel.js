@@ -1,8 +1,20 @@
+import Factory from '../factory';
+const factory = new Factory();
+
 export default class Carousel {
 
-  constructor(size) {
-    this._size = size;
+  constructor(media) {
+    this._media = media;
+    this._size = media.length;
     this._current = 0;
+    this.bg = document.querySelector('.modal-bg');
+    this.caruselPhotoContainer = document
+      .querySelector('.photo-modal__photo-container');
+    this.closeBtn = document.querySelector('.photo-modal__close');
+    this.nextBtn = document.querySelector('.photo-modal__next');
+    this.prevBtn = document.querySelector('.photo-modal__previous');
+    this.cardImages = document.querySelectorAll('.photo-card__img');
+
     this.init();
   }
 
@@ -31,8 +43,12 @@ export default class Carousel {
     }
   }
 
-  get current() {
-    return this._current;
+  get media() {
+    return this._media;
+  }
+
+  set media(_) {
+    throw new Error('Can\'t set carousel media');
   }
 
   get size() {
@@ -41,6 +57,10 @@ export default class Carousel {
 
   set size(_) {
     throw new Error('Can\'t set carousel size');
+  }
+
+  get current() {
+    return this._current;
   }
 
   get next() {
@@ -52,12 +72,12 @@ export default class Carousel {
   }
 
   showModal(i) {
-    document.querySelector('.modal-bg').style.display = 'flex';
+    this.bg.style.display = 'flex';
     this.current = i;
   }
   
   closeModal() {
-    document.querySelector('.modal-bg').style.display = 'none';
+    this.bg.style.display = 'none';
   }
   
   /**
@@ -90,18 +110,28 @@ export default class Carousel {
   }
 
   init() {
-    document.querySelector('.photo-modal__close')
-      .addEventListener('click', this.closeModal);
-
-    document.querySelector('.photo-modal__next')
+    this.caruselPhotoContainer.append(
+      factory.createList('ul', 'PhotoModal', this.media),
+    );
+    this.closeBtn
+      .addEventListener('click', () => this.closeModal());
+    this.nextBtn
       .addEventListener('click', () => this.current = 'next');
-
-    document.querySelector('.photo-modal__previous')
+    this.prevBtn
       .addEventListener('click', () => this.current = 'prev');
-
-    document.querySelectorAll('.photo-card__img').forEach((card, i) => {
+    this.cardImages.forEach((card, i) => {
       card.addEventListener('click', () => this.showModal(i));
     });
+  }
+
+  unmount() {
+    this.caruselPhotoContainer.innerHTML = '';
+    this.closeBtn.replaceWith(this.closeBtn.cloneNode(true));
+    this.nextBtn.replaceWith(this.nextBtn.cloneNode(true));
+    this.prevBtn.replaceWith(this.prevBtn.cloneNode(true));
+    this.cardImages.forEach(
+      card => card.replaceWith(card.cloneNode(true)),
+    );
   }
 
 }

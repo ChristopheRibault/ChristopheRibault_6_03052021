@@ -21,6 +21,14 @@ export default class PhotographerPage {
     this.init();
   }
 
+  render(data) {
+    photoContainer.innerHTML = '';
+    modalPhotoContainer.innerHTML = '';
+    photoContainer.append(
+      factory.createList('ul', 'PhotoCard', data),
+    );
+  }
+
   init() {
     name.textContent = this.photographer.name;
     place.textContent = `${this.photographer.city}, ${this.photographer.country}`;
@@ -38,10 +46,6 @@ export default class PhotographerPage {
       0,
     );
     likesTabPrice.textContent = `${this.photographer.price}€/jour`;
-
-    modalPhotoContainer.append(
-      factory.createList('ul', 'PhotoModal', this.media),
-    );
     
   }
   
