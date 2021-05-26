@@ -12,6 +12,7 @@ export default class ContactForm {
   openModal() {
     this.bg.style.display = 'flex';
     this.main.setAttribute('aria-hidden', true);
+    this.bg.querySelector('input').focus();
   }
 
   closeModal() {
@@ -87,6 +88,7 @@ export default class ContactForm {
 
     } else {
       this.displayErrors(errorList);
+      this.bg.querySelector('input').focus();
     }
   }
 
@@ -116,6 +118,15 @@ export default class ContactForm {
       .addEventListener(
         'click',
         () => this.closeModal(),
+      );
+    
+    document
+      .getElementById('close-form')
+      .addEventListener(
+        'keydown',
+        (e) => {
+          if (e.code === 'Enter') this.closeModal();
+        },
       );
 
     document
