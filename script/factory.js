@@ -28,9 +28,7 @@ export default class Factory {
   createList(listType, componentType, data = []) {
     const list = this.createElement(listType);
     const elements = data.map(elementData => {
-      const li = this.createElement('li');
-      li.append(this.createElement(componentType, elementData));
-      return li;
+      return this.createElement(componentType, elementData);
     });
     list.append(...elements);
 

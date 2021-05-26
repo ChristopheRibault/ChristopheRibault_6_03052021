@@ -1,6 +1,6 @@
 import Factory from '../script/factory';
 
-export default class PhotoModal extends HTMLDivElement {
+export default class PhotoModal extends HTMLLIElement {
 
   constructor(data) {
     super();
@@ -33,6 +33,6 @@ export default class PhotoModal extends HTMLDivElement {
   }
 
   static name = 'photo-modal'
-  static extends = 'div'
+  static extends = 'li'
 
 }

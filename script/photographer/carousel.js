@@ -16,29 +16,30 @@ export default class Carousel {
     this.cardImages = document.querySelectorAll('.photo-card__img');
 
     this.init();
+    this.photos = document.querySelectorAll('.photo-modal__photo');
   }
 
   set current(index) {
     if (index === 'next') {
       this.changePhoto(true);
       this._current = this.next;
-      document.querySelectorAll('.photo-modal__photo')[this.next]
+      this.photos[this.next]
         .classList.add('photo-modal__photo--next');
     }
     if (index === 'prev') {
       this.changePhoto(false);
       this._current =this.prev;
-      document.querySelectorAll('.photo-modal__photo')[this.prev]
+      this.photos[this.prev]
         .classList.add('photo-modal__photo--previous');
     }
 
     if (typeof index === 'number') {
       this._current = index;
-      document.querySelectorAll('.photo-modal__photo')[this.current]
+      this.photos[this.current]
         .classList.add('photo-modal__photo--active');
-      document.querySelectorAll('.photo-modal__photo')[this.next]
+      this.photos[this.next]
         .classList.add('photo-modal__photo--next');
-      document.querySelectorAll('.photo-modal__photo')[this.prev]
+      this.photos[this.prev]
         .classList.add('photo-modal__photo--previous');
     }
   }
@@ -88,8 +89,8 @@ export default class Carousel {
    * @param {boolean} next true if next, false if previous
    */
   changePhoto(next) {
-    const oldPhoto = document.querySelectorAll('.photo-modal__photo')[this.current];
-    const newPhoto = document.querySelectorAll('.photo-modal__photo')[next ? this.next : this.prev];
+    const oldPhoto = this.photos[this.current];
+    const newPhoto = this.photos[next ? this.next : this.prev];
 
     oldPhoto.classList.replace(
       'photo-modal__photo--active',
@@ -101,10 +102,10 @@ export default class Carousel {
     );
 
     if (next) {
-      document.querySelectorAll('.photo-modal__photo')[this.prev]
+      this.photos[this.prev]
         .classList.remove('photo-modal__photo--previous');
     } else {
-      document.querySelectorAll('.photo-modal__photo')[this.next]
+      this.photos[this.next]
         .classList.remove('photo-modal__photo--next');
     }
   }
