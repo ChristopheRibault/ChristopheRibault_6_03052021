@@ -1,6 +1,6 @@
 import Factory from '../script/factory';
 
-export default class PhotographerCard extends HTMLElement {
+export default class PhotographerCard extends HTMLLIElement {
 
   constructor(data) {
     super();
@@ -46,6 +46,6 @@ export default class PhotographerCard extends HTMLElement {
   }
 
   static name = 'photographer-card'
-  static extends = 'article'
+  static extends = 'li'
 
 }

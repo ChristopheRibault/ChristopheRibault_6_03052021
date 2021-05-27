@@ -8,6 +8,4 @@ const filteredPhotographers = data.photographers
     return typeFilter ? photographer.tags.includes(typeFilter) : true;
   });
 
-new HomePage(filteredPhotographers)
-  .fillContent()
-  .init();
+new HomePage(filteredPhotographers);

@@ -7,6 +7,7 @@ export default class HomePage {
 
   constructor(data = {}) {
     this.photographers = data;
+    this.init();
   }
 
 
@@ -26,10 +27,26 @@ export default class HomePage {
     return this;
   }
 
+  skipNav() {
+    const contentFocusable = document.querySelector('main').querySelectorAll('a');
+    contentFocusable[0].focus();
+  }
+
   init() {
+    this.fillContent();
     document.querySelectorAll('.category-tag').forEach(tag => {
       tag.addEventListener('click', () => this.filterPhotographs(tag.value));
     });
+
+    document.querySelector('.skip-nav-btn')
+      .addEventListener(
+        'keydown',
+        (e) => {
+          if (e.code === 'Enter') {
+            this.skipNav();
+          }
+        },
+      );
     
     return this;
   }
