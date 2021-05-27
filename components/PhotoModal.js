@@ -17,11 +17,11 @@ export default class PhotoModal extends HTMLLIElement {
 
     const view = factory.createElement(this.type);
     if (this.type === 'img') {
-      view.src = `/assets/pictures/${data.photographerId}/${data.image}`;
+      view.src = `./assets/pictures/${data.photographerId}/${data.image}`;
       view.alt = data.title;
     } else {
       const source = factory.createElement('source');
-      source.src = `/assets/pictures/${data.photographerId}/${data.video}`;
+      source.src = `./assets/pictures/${data.photographerId}/${data.video}`;
       source.type = 'video/mp4';
       view.setAttribute('controls', true);
       view.append(source);
