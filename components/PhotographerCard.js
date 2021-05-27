@@ -10,7 +10,7 @@ export default class PhotographerCard extends HTMLLIElement {
     // Avatar
     const photographerLink = factory.createElement('a');
     const avatar = factory.createElement('img');
-    avatar.src = `/assets/pictures/avatars/${data.portrait}`;
+    avatar.src = `./assets/pictures/avatars/${data.portrait}`;
     avatar.alt = '';
     avatar.classList.add('avatar-img', 'photographer-card__img');
     const name = factory.createElement('h2');
