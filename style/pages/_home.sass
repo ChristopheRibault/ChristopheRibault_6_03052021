@@ -1,0 +1,27 @@
+.home-title
+  height: $header-height
+  width: $title-width
+  margin: 0
+  font-size: 1.5em
+  color: $primary-color
+  font-weight: 400
+  position: absolute
+  top: 20px
+  right: 5%
+  display: flex
+  justify-content: flex-end
+  align-items: center
+  @include tablet
+    font-size: 1em
+    width: $title-width-mobile
+  @include mobile
+    align-items: flex-start
+    top: 35px
+    font-size: .8em
+
+.photographers-container > ul
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-evenly
+  margin: 0
+  margin-bottom: 2em

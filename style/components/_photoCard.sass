@@ -1,0 +1,28 @@
+.photo-card
+  margin: 20px
+  display: grid
+  grid-template-columns: 2fr 1fr
+  grid-template-rows: 250px 50px
+  &__img
+    width: 300px
+    height: 250px
+    object-fit: cover
+    border-radius: 5px
+    grid-column: 1/span 2
+    cursor: pointer 
+  &__title
+    margin: 0
+    color: $primary-color
+    font-size: 1em
+    align-self: center
+    justify-self: left
+  &__likes
+    display: flex
+    align-items: center
+    color: $primary-color
+    font-size: .8em
+    align-self: center
+    justify-self: right
+    cursor: pointer
+    & > img
+      transform: scale(.7)

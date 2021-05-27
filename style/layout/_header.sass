@@ -1,0 +1,17 @@
+.main-header
+  height: $header-height
+  display: flex
+  flex-flow: row nowrap
+  justify-content: space-between
+  align-items: center
+  width: calc(100% - #{$title-width})
+  @include tablet
+    width: calc(100% - #{$title-width-mobile})
+  @include mobile
+    flex-direction: column
+    width: 100%
+
+.nav-container ul
+  display: flex
+  flex-flow: row wrap
+  justify-content: center
