@@ -185,7 +185,17 @@ export default class Carousel {
       );
     this.cardImages.forEach((card, i) => {
       card.addEventListener('click', () => this.showModal(i));
+      card.addEventListener(
+        'keydown',
+        (e) => {
+          console.log(e.code);
+          if (e.code === 'Enter') {
+            this.showModal(i);
+          }
+        },
+      );
     });
+
     this.bg.addEventListener(
       'keydown',
       (e) => this.navigate(e),
