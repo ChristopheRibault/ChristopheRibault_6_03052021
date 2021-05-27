@@ -32,6 +32,7 @@ export default class PhotographerPage {
   }
 
   init() {
+    document.title = `${this.photographer.name} - FishEye`;
     this.elements.name.textContent = this.photographer.name;
     this.elements.place.textContent = `${this.photographer.city}, ${this.photographer.country}`;
     this.elements.tagline.textContent = this.photographer.tagline;

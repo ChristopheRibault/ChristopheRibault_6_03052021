@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM Sans">
-  <script src="https://kit.fontawesome.com/a9f5c40bda.js" crossorigin="anonymous" defer></script>
   <script src="/dist/photographer.bundle.js" defer></script>
   <script src="/dist/style.bundle.js"></script>
   <title>FishEye</title>
 </head>
 <body>
   <header class="main-header" role="banner">
-    <a href="/" id="page-logo" class="page-logo">
-      Fish<i class="fas fa-camera"></i>ye
+    <a href="/" id="page-logo" class="page-logo" aria-label="FishEye">
+      Fish<img src="/assets/logo.svg" alt="">ye
     </a>
   </header>
   <main>
@@ -57,18 +56,18 @@
     </section>
     <div class="likes-tab">
       <span class="likes-tab__qty"></span>
-      <i class="fas fa-heart likes-tab__icon"></i>
+      <img aria-label="likes" class="likes-tab__icon" src="/assets/heart-black.svg" alt="heart icon">
       <span class="likes-tab__price"></span>
     </div>
   </main>
   
   <div class="modal-bg">
-    <div class="photo-modal" role="dialog" aria-modal="true">
-      <div class="photo-modal__close" tabindex="0"></div>
-      <div class="photo-modal__previous" tabindex="0"></div>
-      <div class="photo-modal__photo-container"></div>
-      <div class="photo-modal__next" tabindex="0"></div>
-    </div>
+    <section class="photo-modal" aria-modal="true" role="region" aria-roledescription="carousel" aria-label="liste de photos et vidéos">
+      <div class="photo-modal__close" tabindex="0" aria-label="fermer"></div>
+      <div class="photo-modal__previous" tabindex="0" aria-controls="carousel-photo-container" aria-label="précédent"></div>
+      <div id="carousel-photo-container" class="photo-modal__photo-container" aria-live="assertive"></div>
+      <div class="photo-modal__next" tabindex="0" aria-controls="carousel-photo-container" aria-label="suivant"></div>
+    </section>
   </div>
   <div class="form-modal-bg">
     <form class="form-modal" id="contact-form" role="dialog" aria-modal="true" aria-labelledby="contact-me-title">

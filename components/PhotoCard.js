@@ -8,7 +8,7 @@ export default class PhotoCard extends HTMLLIElement {
     this.likesCount = data.likes;
     const incrementLikes = () => {
       this.likesCount += 1;
-      likes.innerHTML = `${this.likesCount} <i class="fas fa-heart"></i>`;
+      likes.innerHTML = `${this.likesCount} <img src='/assets/heart.svg' alt='like icon'/>`;
       document.dispatchEvent(
         new Event('newLike'),
       );
@@ -28,8 +28,9 @@ export default class PhotoCard extends HTMLLIElement {
     title.classList.add('photo-card__title');
 
     const likes = factory.createElement('div');
-    likes.innerHTML = `${this.likesCount} <i class="fas fa-heart"></i>`;
+    likes.innerHTML = `${this.likesCount} <img src='/assets/heart.svg' alt='like icon'/>`;
     likes.classList.add('photo-card__likes');
+    likes.setAttribute('aria-label', 'likes');
     likes.addEventListener(
       'click',
       () => incrementLikes(),

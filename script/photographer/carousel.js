@@ -147,9 +147,12 @@ export default class Carousel {
   }
 
   init() {
-    this.caruselPhotoContainer.append(
-      factory.createList('ul', 'PhotoModal', this.media),
-    );
+    const photos = factory.createList('ul', 'PhotoModal', this.media);
+    const photosList = photos.querySelectorAll('li');
+    photosList.forEach((photo, i) => {
+      photo.setAttribute('aria-label', `slide ${i + 1} sur ${photosList.length}`);
+    });
+    this.caruselPhotoContainer.append(photos);
     this.closeBtn
       .addEventListener('click', () => this.closeModal());
     this.closeBtn

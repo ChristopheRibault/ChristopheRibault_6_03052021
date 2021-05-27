@@ -17,8 +17,12 @@
     align-self: center
     justify-self: left
   &__likes
+    display: flex
+    align-items: center
     color: $primary-color
     font-size: .8em
     align-self: center
     justify-self: right
-    cursor: pointer 
+    cursor: pointer
+    & > img
+      transform: scale(.7)

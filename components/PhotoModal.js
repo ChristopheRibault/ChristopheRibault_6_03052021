@@ -9,6 +9,8 @@ export default class PhotoModal extends HTMLLIElement {
     this.type = data.image ? 'img' : 'video';
     this.classList.add('photo-modal__photo');
     this.setAttribute('tabindex', -1);
+    this.setAttribute('role', 'group');
+    this.setAttribute('aria-roledescription', 'slide');
     const factory = new Factory();
     const container = factory.createElement('div');
     container.classList.add('photo-modal__container');
@@ -16,6 +18,7 @@ export default class PhotoModal extends HTMLLIElement {
     const view = factory.createElement(this.type);
     if (this.type === 'img') {
       view.src = `/assets/pictures/${data.photographerId}/${data.image}`;
+      view.alt = data.title;
     } else {
       const source = factory.createElement('source');
       source.src = `/assets/pictures/${data.photographerId}/${data.video}`;
