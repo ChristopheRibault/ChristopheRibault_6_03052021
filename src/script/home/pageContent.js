@@ -1,5 +1,5 @@
 import Factory from '../factory';
-import tagNames from '../../assets/data/tags.json';
+import tagNames from '../../../assets/data/tags.json';
 
 const factory = new Factory();
 
