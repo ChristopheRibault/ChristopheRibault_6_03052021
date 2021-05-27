@@ -17,7 +17,7 @@ export default class PhotographerCard extends HTMLLIElement {
     name.textContent = data.name;
     name.classList.add('photographer-card__name', 'photographer-name');
     photographerLink.append(avatar, name);
-    photographerLink.setAttribute('href', `/pages/photographer.html?id=${data.id}`);
+    photographerLink.setAttribute('href', `./pages/photographer.html?id=${data.id}`);
     photographerLink.classList.add('photographer-card__link');
 
 
