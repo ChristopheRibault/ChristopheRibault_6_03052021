@@ -38,7 +38,7 @@ export default class PhotographerPage {
     this.elements.tagline.textContent = this.photographer.tagline;
     const tags = factory.createList('ul', 'Tag', this.photographer.tags);
     this.elements.tagsContainer.append(tags);
-    this.elements.avatar.src = `./assets/pictures/avatars/${this.photographer.portrait}`;
+    this.elements.avatar.src = `assets/pictures/avatars/${this.photographer.portrait}`;
     
     this.elements.photoContainer.append(
       factory.createList('ul', 'PhotoCard', this.media),

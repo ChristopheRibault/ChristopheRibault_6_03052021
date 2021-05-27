@@ -8,9 +8,9 @@ module.exports = {
   },
   entry: {
     polyfill: 'babel-polyfill',
-    home: './script/home/index.js',
-    photographer: './script/photographer/index.js',
-    style: './style/index.sass',
+    home: './src/script/home/index.js',
+    photographer: './src/script/photographer/index.js',
+    style: './src/style/index.sass',
   },
   output: {
     path:path.resolve(__dirname, "dist"),

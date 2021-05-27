@@ -1,8 +1,8 @@
 import PhotographerPage from './pageContent';
 import Carousel from './carousel';
 import ContactForm from './contactForm';
-import data from '../../assets/data/data.json';
 import Dropdown from './dropdown';
+import data from '../../../assets/data/data.json';
 
 const id = Number(new URLSearchParams(document.location.search).get('id'));
 

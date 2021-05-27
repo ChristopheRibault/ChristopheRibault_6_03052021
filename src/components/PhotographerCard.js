@@ -10,14 +10,14 @@ export default class PhotographerCard extends HTMLLIElement {
     // Avatar
     const photographerLink = factory.createElement('a');
     const avatar = factory.createElement('img');
-    avatar.src = `./assets/pictures/avatars/${data.portrait}`;
+    avatar.src = `assets/pictures/avatars/${data.portrait}`;
     avatar.alt = '';
     avatar.classList.add('avatar-img', 'photographer-card__img');
     const name = factory.createElement('h2');
     name.textContent = data.name;
     name.classList.add('photographer-card__name', 'photographer-name');
     photographerLink.append(avatar, name);
-    photographerLink.setAttribute('href', `./pages/photographer.html?id=${data.id}`);
+    photographerLink.setAttribute('href', `./photographer.html?id=${data.id}`);
     photographerLink.classList.add('photographer-card__link');
 
 
