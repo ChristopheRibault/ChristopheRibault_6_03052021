@@ -5,13 +5,26 @@ export default class PhotoCard extends HTMLLIElement {
   constructor(data){
     super();
     const factory = new Factory();
-    this.likesCount = data.likes;
+    this.liked = JSON.parse(localStorage.getItem('likedPhotos')).includes(data.id);
+    this.likesCount = data.likes + this.liked;
+
     const incrementLikes = () => {
-      this.likesCount += 1;
-      likes.innerHTML = `${this.likesCount} <img src='assets/heart.svg' alt='like icon'/>`;
-      document.dispatchEvent(
-        new Event('newLike'),
-      );
+      if (!this.liked) {
+        this.likesCount += 1;
+        likes.innerHTML = `${this.likesCount} <img src='assets/heart.svg' alt='like icon'/>`;
+        likes.style['font-weight'] = 900;
+        this.liked = true;
+        const likedPhotos = JSON.parse(localStorage.getItem('likedPhotos'));
+        likedPhotos.push(data.id);
+        
+        localStorage.setItem(
+          'likedPhotos',
+          JSON.stringify(likedPhotos),
+        );
+        document.dispatchEvent(
+          new Event('newLike'),
+        );
+      }
     };
 
     this.id = `card-${data.id}`;
@@ -29,6 +42,7 @@ export default class PhotoCard extends HTMLLIElement {
 
     const likes = factory.createElement('div');
     likes.innerHTML = `${this.likesCount} <img src='assets/heart.svg' alt='like icon'/>`;
+    if (this.liked) likes.style['font-weight'] = 900;
     likes.classList.add('photo-card__likes');
     likes.setAttribute('aria-label', 'likes');
     likes.addEventListener(

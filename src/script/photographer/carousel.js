@@ -8,6 +8,12 @@ export default class Carousel {
     this._size = media.length;
     this._current = 0;
     this.bg = document.querySelector('.modal-bg');
+    this.focusableElements = this.bg.querySelectorAll('button:not([disabled]), *[tabindex="0"]');
+    this.firstFocusable = this.focusableElements[0];
+    this.lastFocusable = this.focusableElements[
+      this.focusableElements.length - 1
+    ];
+
     this.caruselPhotoContainer = document
       .querySelector('.photo-modal__photo-container');
     this.closeBtn = document.querySelector('.photo-modal__close');
@@ -140,6 +146,22 @@ export default class Carousel {
         break;
       case 'ArrowRight':
         this.current = 'next';
+        break;
+      case 'Tab':
+        if(
+          e.shiftKey
+          && document.activeElement === this.firstFocusable
+        ){
+          e.preventDefault();
+          this.lastFocusable.focus();
+        }
+        if (
+          !e.shiftKey
+          && document.activeElement === this.lastFocusable
+        ) {
+          e.preventDefault();
+          this.firstFocusable.focus();
+        }
         break;
       default:
         break;

@@ -24,6 +24,10 @@ export default class PhotographerPage {
     this.init();
   }
 
+  likePhoto() {
+
+  }
+
   render(data) {
     this.elements.photoContainer.innerHTML = '';
     this.elements.photoContainer.append(
@@ -31,7 +35,17 @@ export default class PhotographerPage {
     );
   }
 
+  initStorage() {
+    this.likedPhotos = localStorage.getItem('likedPhotos');
+    if(!Array.isArray(JSON.parse(this.likedPhotos))) {
+      this.likedPhotos = JSON.stringify([]);
+    }
+    localStorage.setItem('likedPhotos', this.likedPhotos);
+  }
+
   init() {
+    this.initStorage();
+
     document.title = `${this.photographer.name} - FishEye`;
     this.elements.name.textContent = this.photographer.name;
     this.elements.place.textContent = `${this.photographer.city}, ${this.photographer.country}`;
