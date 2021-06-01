@@ -6,6 +6,12 @@ export default class ContactForm {
     this.photographerName = name;
     this.bg = document.querySelector('.form-modal-bg');
     this.main = document.querySelector('main');
+
+    this.focusableElements = this.bg.querySelectorAll('button:not([disabled]), textarea:not([disabled]), input:not([disabled]), *[tabindex="0"]');
+    this.firstFocusable = this.focusableElements[0];
+    this.lastFocusable = this.focusableElements[
+      this.focusableElements.length - 1
+    ];
     this.init();
   }
 
@@ -118,6 +124,33 @@ export default class ContactForm {
   }
 
 
+  navigate(e) {
+    switch (e.code) {
+      case 'Escape':
+        this.closeModal();
+        break;
+      case 'Tab':
+        if(
+          e.shiftKey
+          && document.activeElement === this.firstFocusable
+        ){
+          e.preventDefault();
+          this.lastFocusable.focus();
+        }
+        if (
+          !e.shiftKey
+          && document.activeElement === this.lastFocusable
+        ) {
+          e.preventDefault();
+          this.firstFocusable.focus();
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
+
   init() {
     document
       .getElementById('contact-me-title')
@@ -133,9 +166,7 @@ export default class ContactForm {
     document
       .addEventListener(
         'keydown',
-        (e) => {
-          if (e.code === 'Escape') this.closeModal();
-        },
+        (e) => this.navigate(e),
       );
 
     document
