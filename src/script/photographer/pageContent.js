@@ -48,8 +48,17 @@ export default class PhotographerPage {
 
     document.title = `${this.photographer.name} - FishEye`;
     this.elements.name.textContent = this.photographer.name;
+    this.elements.name.setAttribute('tabindex', 0);
+    this.elements.name.setAttribute('aria-label', `Prénom et nom du photographe: ${this.photographer.name}`);
+
     this.elements.place.textContent = `${this.photographer.city}, ${this.photographer.country}`;
+    this.elements.place.setAttribute('tabindex', 0);
+    this.elements.place.setAttribute('aria-label', `Ville et pays du photographe: ${this.photographer.city}, ${this.photographer.country}`);
+
     this.elements.tagline.textContent = this.photographer.tagline;
+    this.elements.tagline.setAttribute('tabindex', 0);
+    this.elements.tagline.setAttribute('aria-label', `slogan: ${this.photographer.tagline}`);
+
     const tags = factory.createList('ul', 'Tag', this.photographer.tags);
     this.elements.tagsContainer.append(tags);
     this.elements.avatar.src = `assets/pictures/avatars/${this.photographer.portrait}`;
@@ -59,7 +68,11 @@ export default class PhotographerPage {
     );
 
     this.elements.likesTabQty.textContent = this.likesCount;
+    this.elements.likesTabQty.setAttribute('tabindex', 0);
+    this.elements.likesTabQty.setAttribute('aria-label', `Total des mentions like pour ce photographe : ${this.likesCount}`);
     this.elements.likesTabPrice.textContent = `${this.photographer.price}€/jour`;
+    this.elements.likesTabPrice.setAttribute('tabindex', 0);
+    this.elements.likesTabPrice.setAttribute('aria-label', `Tarif du photographe: ${this.photographer.price}€ par jour`);
 
     document.addEventListener(
       'newLike',

@@ -18,7 +18,7 @@ export default class PhotoModal extends HTMLLIElement {
     const view = factory.createElement(this.type);
     if (this.type === 'img') {
       view.src = `assets/pictures/${data.photographerId}/${data.image}`;
-      view.alt = data.title;
+      view.alt = data.alt;
     } else {
       const source = factory.createElement('source');
       source.src = `assets/pictures/${data.photographerId}/${data.video}`;

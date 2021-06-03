@@ -53,6 +53,7 @@ export default class Carousel {
     this.photos[this.current]
       .querySelector('img, video')
       .setAttribute('tabindex', 0);
+    this.photos[this.current].querySelector('img, video').focus();
   }
 
   get media() {
@@ -86,7 +87,6 @@ export default class Carousel {
   showModal(i) {
     this.bg.style.display = 'flex';
     this.current = i;
-    this.closeBtn.focus();
   }
   
   closeModal() {
@@ -172,7 +172,7 @@ export default class Carousel {
     const photos = factory.createList('ul', 'PhotoModal', this.media);
     const photosList = photos.querySelectorAll('li');
     photosList.forEach((photo, i) => {
-      photo.setAttribute('aria-label', `slide ${i + 1} sur ${photosList.length}`);
+      photo.setAttribute('aria-label', `Photo ${i + 1} sur ${photosList.length}`);
     });
     this.caruselPhotoContainer.append(photos);
     this.closeBtn
