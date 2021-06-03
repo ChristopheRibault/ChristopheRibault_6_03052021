@@ -13,6 +13,7 @@ export default class PhotoCard extends HTMLLIElement {
         this.likesCount += 1;
         likes.innerHTML = `${this.likesCount} <img src='assets/heart.svg' alt='like icon'/>`;
         likes.style['font-weight'] = 900;
+        likes.setAttribute('aria-pressed', true);
         this.liked = true;
         const likedPhotos = JSON.parse(localStorage.getItem('likedPhotos'));
         likedPhotos.push(data.id);
@@ -32,7 +33,7 @@ export default class PhotoCard extends HTMLLIElement {
 
     const thumb = factory.createElement(data.image ? 'img' : 'video');
     thumb.src = `./assets/pictures/${data.photographerId}/${data.image || data.video}`;
-    thumb.alt = data.title;
+    thumb.alt = data.alt;
     thumb.classList.add('photo-card__img');
     thumb.setAttribute('tabIndex', 0);
 
@@ -42,9 +43,12 @@ export default class PhotoCard extends HTMLLIElement {
 
     const likes = factory.createElement('div');
     likes.innerHTML = `${this.likesCount} <img src='assets/heart.svg' alt='like icon'/>`;
+    likes.setAttribute('role', 'button');
+    likes.setAttribute('aria-pressed', this.liked);
+    likes.setAttribute('aria-label', `${this.likesCount} likes`);
+
     if (this.liked) likes.style['font-weight'] = 900;
     likes.classList.add('photo-card__likes');
-    likes.setAttribute('aria-label', 'likes');
     likes.addEventListener(
       'click',
       () => incrementLikes(),
