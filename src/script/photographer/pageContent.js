@@ -76,8 +76,8 @@ export default class PhotographerPage {
 
     document.addEventListener(
       'newLike',
-      () => {
-        this.likesCount += 1;
+      (e) => {
+        this.likesCount += e.detail ? 1 : -1;
         this.elements.likesTabQty.textContent = this.likesCount;
       },
     );
