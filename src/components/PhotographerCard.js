@@ -35,7 +35,12 @@ export default class PhotographerCard extends HTMLLIElement {
     photographerInfo.classList.add('photographer-card__info');
 
 
-    const tags = factory.createList('ul', 'Tag', data.tags);
+    const tags = factory.createList(
+      'ul',
+      'Tag',
+      data.tags,
+      { original: false },
+    );
     tags.classList.add('photographer-card__tags');
 
     this.append(

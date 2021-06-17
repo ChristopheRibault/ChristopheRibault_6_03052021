@@ -7,24 +7,46 @@ export default class HomePage {
 
   constructor(data = {}) {
     this.photographers = data;
+    this.photographersContainer = document
+      .getElementById('photographers-container');
     this.init();
   }
 
+  filterPhotographs() {
+    const activeTags = Array.from(
+      document.forms.navigation.elements,
+    )
+      .filter(el => el.checked)
+      .map(el => el.name);
 
-  filterPhotographs(tagName) {
-    document.location.search = `type=${tagName}`;
+    let filteredPhotographers = this.photographers.filter(
+      photograph => photograph.tags.some(
+        tag => activeTags.includes(tag),
+      ),
+    );
+
+    if (filteredPhotographers.length === 0) {
+      filteredPhotographers = this.photographers;
+    }
+
+    this.renderPhotographers(filteredPhotographers);
+
+  }
+
+  renderPhotographers(photographers) {
+    this.photographersContainer.innerHTML = '';
+
+    this.photographersContainer.append(
+      factory.createList('ul', 'PhotographerCard', photographers),
+    );
   }
 
   fillContent() {
-    document.getElementById('nav-container').append(
+    document.getElementById('navigation-form').append(
       factory.createList('ul', 'Tag', tagNames),
     );
 
-    document.getElementById('photographers-container').append(
-      factory.createList('ul', 'PhotographerCard', this.photographers),
-    );
-
-    return this;
+    this.renderPhotographers(this.photographers);
   }
 
   skipNav() {
@@ -35,7 +57,7 @@ export default class HomePage {
   init() {
     this.fillContent();
     document.querySelectorAll('.category-tag').forEach(tag => {
-      tag.addEventListener('click', () => this.filterPhotographs(tag.value));
+      tag.addEventListener('click', () => this.filterPhotographs());
     });
 
     document.querySelector('.skip-nav-btn')
@@ -47,8 +69,6 @@ export default class HomePage {
           }
         },
       );
-    
-    return this;
   }
   
 }

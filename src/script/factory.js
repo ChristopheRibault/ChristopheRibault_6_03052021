@@ -8,14 +8,14 @@ export default class Factory {
    * @param {*} [data] data needed by the element
    * @returns {HTMLElement}
    */
-  createElement(type, data) {
+  createElement(type, data, options = {}) {
     const Component = components[type];
     if (!Component) return document.createElement(type);
 
     if (customElements.get(Component.name) === undefined) {
       this.init(Component);
     }
-    return new Component(data);
+    return new Component(data, options);
   }
 
   /**
@@ -25,10 +25,10 @@ export default class Factory {
    * @param {Array} [data=[]] 
    * @returns {HTMLOListElement|HTMLUListElement}
    */
-  createList(listType, componentType, data = []) {
+  createList(listType, componentType, data = [], options = {}) {
     const list = this.createElement(listType);
     const elements = data.map(elementData => {
-      return this.createElement(componentType, elementData);
+      return this.createElement(componentType, elementData, options);
     });
     list.append(...elements);
 
