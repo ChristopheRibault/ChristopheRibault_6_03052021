@@ -8,11 +8,11 @@
   &__label
     padding: 2px 3px
     cursor: pointer
-    &:hover
+    &:hover, &:focus
       background-color: $primary-color
       color: #fff
   &__checkbox
     display: none
   &__checkbox:checked + &__label
-      background-color: $primary-color
-      color: #fff
+    background-color: $primary-color
+    color: #fff

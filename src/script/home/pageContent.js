@@ -19,6 +19,8 @@ export default class HomePage {
       .filter(el => el.checked)
       .map(el => el.name);
 
+    console.log(activeTags);
+
     let filteredPhotographers = this.photographers.filter(
       photograph => photograph.tags.some(
         tag => activeTags.includes(tag),
@@ -58,6 +60,16 @@ export default class HomePage {
     this.fillContent();
     document.querySelectorAll('.category-tag').forEach(tag => {
       tag.addEventListener('click', () => this.filterPhotographs());
+    });
+
+    document.querySelectorAll('.category-tag').forEach(tag => {
+      tag.addEventListener('keydown', (e) => {
+        if (e.code === 'Enter') {
+          const input = tag.querySelector('input');
+          input.checked = !input.checked;
+          this.filterPhotographs();
+        }
+      });
     });
 
     document.querySelector('.skip-nav-btn')

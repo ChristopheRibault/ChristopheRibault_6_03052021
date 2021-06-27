@@ -6,7 +6,6 @@ export default class Tag extends HTMLLIElement {
     super();
 
     this.classList.add('category-tag');
-    console.log(original);
     if (original) {
       this.checkbox = document.createElement('input');
       this.checkbox.classList.add('category-tag__checkbox');
@@ -20,6 +19,7 @@ export default class Tag extends HTMLLIElement {
     this.label = document.createElement('label');
     this.label.classList.add('category-tag__label');
     this.label.setAttribute('for', `tag-${content}`);
+    this.setAttribute('tabindex', 0);
     this.label.textContent = `#${StringHelper.capitalize(content)}`;
 
     this.append(this.label);
