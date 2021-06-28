@@ -61,7 +61,7 @@ export default class Dropdown {
       item.removeAttribute('aria-selected');
     });
     liElement.setAttribute('aria-selected', true);
-    this.selectedValue = liElement.getAttribute('value');
+    this.selectedValue = liElement.getAttribute('data-value');
     this.button.textContent = liElement.textContent;
     this.collapse();
   }
